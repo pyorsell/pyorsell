@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon</title>
+    <style>
+        body {
+            font-family: sans-serif; /* Choose a font you like */
+            margin: 0;
+            overflow: hidden; /* Prevent scrollbars */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh; /* Ensure full viewport height */
+            color: #fff; /* Text color */
+            background-size: cover; /* Cover the entire background */
+            background-position: center; /* Center the background image */
+            background-repeat: no-repeat;
+            /* Add this line. The URL will be replaced by user input. */
+            background-image: url('placeholder-background.jpg'); /* Placeholder image */
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for text */
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 0.5em;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 2em;
+        }
+
+        #companyName { /* Style for company name input */
+            font-size: 1.5em; /* Adjust font size */
+            padding: 10px; /* Add padding */
+            border: 1px solid #ccc; /* Add border */
+            border-radius: 5px; /* Add rounded corners */
+            color: black; /* Text color */
+            background-color: white; /* Background color */
+        }
+
+        #backgroundImage { /* Style for background image input */
+            margin-top: 10px;
+        }
+
+        /* Responsive Design - Adjust as needed */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Coming Soon</h1>
+        <p>We're working hard to bring you something amazing!</p>
+
+        <label for="companyName">Company Name:</label><br>
+        <input type="text" id="companyName" value="Py or Sell"><br><br>
+
+        <label for="backgroundImage">Background Image URL:</label><br>
+        <input type="text" id="backgroundImage" placeholder="O:\OneDrive\Pictures\test_ws_background.JPEG"><br>
+        <button onclick="changeBackground()">Update Background</button>
+
+
+    </div>
+
+    <script>
+        function changeBackground() {
+            const imageUrl = document.getElementById('backgroundImage').value;
+            if (imageUrl) {
+                document.body.style.backgroundImage = `url('${imageUrl}')`;
+            } else {
+                alert("Please enter a valid image URL.");
+            }
+        }
+
+        // Set company name in the page title and heading
+        document.getElementById('companyName').addEventListener('input', function() {
+            const companyName = this.value;
+            document.title = companyName + " - Coming Soon"; // Update title
+            document.querySelector('.container h1').textContent = companyName; // Update heading
+        });
+
+    </script>
+
+</body>
+</html>
